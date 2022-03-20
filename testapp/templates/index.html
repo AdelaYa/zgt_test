@@ -1,0 +1,262 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head_script %}
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=6f0b53cd-1401-46ba-9049-fa9ae72aaf6c&lang=ru_RU" type="text/javascript"></script>
+{% endblock head_script %}
+
+
+{% block content %}
+    {# section hero start #}
+    <section class="section-hero">
+        <div class="container">
+            <h1 class="hero__title">Краб - система</h1>
+            <p class="hero__description">Для быстровозводимых <br>каркасных конструкций</p>
+            <a class="btn btn-green hero__button" href="#" data-modal="modal-phone">Получить консультацию</a>
+        </div>
+    </section>
+    {# section hero end #}
+
+    {# section advantages start #}
+    <section class="section-advantages">
+        <div class="container">
+            <h2 class="advantages__title section-title">ПРЕИМУЩЕСТВА СИСТЕМЫ</h2>
+            <ul class="advantages__list">
+                <li class="advantages__item">
+                    <svg class="advantages__svg red-svg">
+                       <img src="../static/img/advantages/bodybuilding.svg" alt="adv_strength">
+                    </svg>
+                    <div class="advantages__text">
+                        <p class="advantages__text-title">Высокая прочность, <br>жёсткость и надёжность</p>
+                        <p class="advantages__text-description">По прочности соединение с помощью <br>краб-системы ничем
+                            не уступает сварке</p>
+                    </div>
+                </li>
+                <li class="advantages__item">
+                    <svg class="advantages__svg red-svg">
+                        <img src="../static/img/advantages/piggy.svg" alt="adv_price">
+                    </svg>
+                    <div class="advantages__text">
+                        <p class="advantages__text-title">Низкая стоимость</p>
+                        <p class="advantages__text-description">
+                            Цена конструкции относительна низка, так как: <br>
+                            • Вам не нужно использовать сварочный аппарат;<br>
+                            • работу Вы можете сделать своими руками
+                        </p>
+                    </div>
+                </li>
+                <li class="advantages__item">
+                    <svg class="advantages__svg red-svg">
+                        <img src="../static/img/advantages/cycle.svg" alt="adv_reusable">
+                    </svg>
+                    <div class="advantages__text">
+                        <p class="advantages__text-title">Возможность многоразового <br>использования</p>
+                        <p class="advantages__text-description">
+                            Система соединения позволяет перестроить конструкцию – уменьшить, увеличить размеры
+                        </p>
+                    </div>
+                </li>
+                <li class="advantages__item">
+                    <svg class="advantages__svg red-svg">
+                        <img src="../static/img/advantages/montage.svg" alt="adv_montage">
+                    </svg>
+                    <div class="advantages__text">
+                        <p class="advantages__text-title">Простота монтажа</p>
+                        <p class="advantages__text-description">
+                            Для выполнения работ Вам не требуется <br>специальных знаний, Краб-система <br>закрепляется
+                            при помощи болтов и гаек
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    {# section advantages end #}
+
+    {# section stock start #}
+    <section class="section-stock" id="catalog">
+        <div class="container">
+            <h2 class="stock__title section-title">ВСЕГДА В НАЛИЧИИ</h2>
+            <div class="stock__list">
+                 {% for product in products %}
+                    {% include 'includes/product_card.html' %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {# section stock end #}
+
+    {# section stock start #}
+    <section class="section-why">
+        <div class="container">
+            <h2 class="why__title section-title">Почему мы?</h2>
+            <ul class="why__list">
+                <li class="why__item">
+                    <svg class="why__svg red-svg">
+                        <img src="../static/img/about/factory.svg" alt="why_house">
+                    </svg>
+                    <div class="why-text">
+                        <p class="why-text__title">
+                            Собственное <br>производство
+                        </p>
+                        <p class="why__description">
+                            Мы изготавливаем элементы краб-системы на собственном производстве в Вологде, уделяя особое
+                            внимание качеству.
+                        </p>
+                    </div>
+
+                </li>
+                <li class="why__item">
+                    <svg class="why__svg red-svg">
+                        <img src="../static/img/about/truck.svg" alt="why_delivery">
+                    </svg>
+                    <div class="why-text">
+                        <p class="why-text__title">
+                            Доставка <br> по всей России
+                        </p>
+                        <p class="why__description">
+                            Мы осуществляем доставку нашей продукции по всей России.
+                        </p>
+                    </div>
+                </li>
+                <li class="why__item">
+                    <svg class="why__svg red-svg">
+                        <img src="../static/img/about/rub.svg" alt="why_price">
+                    </svg>
+                    <div class="why-text">
+                        <p class="why-text__title">
+                            Доступные <br>цены
+                        </p>
+                        <p class="why__description">
+                            Так как мы являемся производителем, мы предлагаем нашу продукцию без лишних наценок.
+                        </p>
+                    </div>
+                </li>
+                <li class="why__item">
+                    <svg class="why__svg red-svg">
+                        <img src="../static/img/about/like.svg" alt="why_guarantee">
+                        </svg>
+                    <div class="why-text">
+                        <p class="why-text__title">
+                            Гарантия <br>качества
+                        </p>
+                        <p class="why__description">
+                            Мы уделяем особое внимание качеству нашей продукции и дорожим нашими клиентами.
+                        </p>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </section>
+    {# section stock end #}
+
+    {# section production start #}
+    <section class="section-production">
+        <div class="container">
+            <h2 class="production_title section-title">Наше производство</h2>
+             <div class="video" data-video="{{ site_settings.video_url }}">
+
+                <div class="video__media" ><iframe width="1280" height="720" src="https://www.youtube-nocookie.com/embed/66_Rr32d1rw?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            </div>
+        </div>
+    </section>
+    {# section production end #}
+
+    {# section callback start #}
+    <section class="section-callback" id="callback">
+        <div class="container">
+            <form class="callback__form form" action="">
+                <h2 class="form__title">
+                    ОСТАВИТЬ ЗАЯВКУ
+                </h2>
+                <p class="form__description">
+                    НА РАСЧЕТ СТОИМОСТИ
+                </p>
+                <div class="form-element">
+                    <input class="form__input form__phone" type="tel" name="phone" placeholder="Номер телефона"
+                           required>
+                    <p class="error-field">
+                        <span></span>
+                    </p>
+                </div>
+                <div class="form-element">
+                    <input class="form__input form__email" type="email" name="email" placeholder="E-mail">
+                    <p class="error-field">
+                        <span></span>
+                    </p>
+                </div>
+                <div class="form-element">
+                    <button class="btn btn-green form__button" type="submit">Заказать расчёт цены</button>
+                </div>
+                <div class="form-element">
+
+                    <label class="form__acceptance">
+                        <input class="form__checkbox" type="checkbox" name="agree">
+                        <span class="custom-checkbox"></span>
+                        <span class="form__acceptance-text">Соглашаюсь с
+                            <a href="#">условиями передачи данных</a>
+                        </span>
+                    </label>
+                </div>
+            </form>
+        </div>
+    </section>
+    {# section callback end #}
+
+    {# section partners start #}
+    <section class="section-partners" id="partners">
+        <div class="container">
+            <h2 class="partners__title section-title">Наши партнеры</h2>
+            <ul class="partners__list">
+                <li class="partners__item">
+                    <a href="https://www.severstal.com/" class="partners__link">
+                         <img src="{% static 'img/partners/severstal.png' %}" alt="Северстальclass=" class="partners__img">
+                    </a>
+                </li>
+                <li class="partners__item">
+                    <a href="https://zavodteplic.ru/" class="partners__link">
+                        <img src="{% static 'img/partners/zavodeplic.png' %}" alt="Завод готовых теплиц"
+                             class="partners__img">
+                    </a>
+                </li>
+                <li class="partners__item">
+                    <a href="https://lva.gf1.com/lv/" class="partners__link">
+                        <img src="{% static 'img/partners/gf1.png' %}" alt="gf1" class="partners__img">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    {# section partners end #}
+
+    {# section partners start #}
+    <section class="section-comments" id="comments">
+        <div class="container">
+            <h2 class="comments__title section-title">Отзывы наших клиентов</h2>
+            <div class="comments">
+                <ul class="comments__list">
+                    {% for review in reviews %}
+                        {% include 'includes/comment_card.html' %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+    {# section partners end #}
+
+    {# section mao start #}
+    <section class="section-map">
+        <div class="container">
+            <h2 class="map__title section-title">
+                Мы на карте
+            </h2>
+        </div>
+        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A9ba8678ebb24baa1da63e7813880750f7e04f0541e2bddad475f68b076463d29&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+    </section>
+
+
+    {# section mao end #}
+{% endblock content %}

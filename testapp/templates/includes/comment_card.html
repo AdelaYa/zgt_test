@@ -1,0 +1,15 @@
+{% load static %}
+
+<li class="comments__item">
+    <div class="comments__img">
+        <img src="{{ review.image }}">
+    </div>
+    <div class="comments__content">
+        <p class="comments__name">
+            {{ review.author }}
+        </p>
+        <p class="comments__text">
+            {{ review.review  }}
+        </p>
+    </div>
+</li>

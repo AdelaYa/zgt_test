@@ -1,0 +1,175 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+    {% block extra_styles %}
+
+    {% endblock extra_styles %}
+
+  <title>
+    {% block title %}
+      Standart manufacture
+    {% endblock title %}
+  </title>
+
+    {# Yandex map #}
+    {% block head_script %}
+
+    {% endblock head_script %}
+
+</head>
+<body>
+ <header class="header modal-lock">
+        <div class="container">
+            <div class="header__burger">
+                <span></span>
+            </div>
+            <div class="header__content">
+                <a class="header__logo" href="{% url 'index' %}">
+                    <svg>
+                        <img src="../static/img/logo.svg" alt="logo">
+                    </svg>
+                </a>
+                <nav class="header__menu">
+                    <ul class="header__list">
+                        <li class="header__item">
+                            <a class="header__link" href="#catalog">Каталог</a>
+                        </li>
+                        <li class="header__item">
+                            <a class="header__link" href="#callback">Расчет стоимости</a>
+                        </li>
+                        <li class="header__item">
+                            <a class="header__link" href="#partners">Партнеры</a>
+                        </li>
+                        <li class="header__item">
+                            <a class="header__link" href="#comments">Отзывы</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="city header__info">
+                    <svg class="header__info-svg city__svg">
+                        <img src="../static/img/icons/map-marker.svg" alt="map-marker">
+                    </svg>
+                    <p class="city-selected header__info-title" data-change="city">
+                        {{ cities.current.title }}
+                    </p>
+                    <a class="city-all header__info-link" href="#" data-modal="modal-city" id="all-city">
+                        Все города
+                    </a>
+                </div>
+                 <div class="call header__info">
+                      <svg class="call__svg header__info-svg">
+                        <img src="../static/img/icons/phone.svg" alt="phone">
+                      </svg>
+                     <p class="call__phone header__info-title" data-change="phone">
+                         {{ cities.current.phone }}
+                     </p>
+                     <a class="call-order header__info-link" href="tel:{{ cities.current.get_phone_for_link }}" data-phone-change="true">Заказать звонок</a>
+                 </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        {% block content %}
+
+        {% endblock content %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <a class="footer__logo" href="/">
+                <svg class="footer__svg">
+                    <img src="../static/img/logo.svg" alt="logo">
+                </svg>
+            </a>
+            <div class="footer__content">
+                <div class="footer__text">
+                    <svg class="footer__text-svg footer__svg-address">
+                       <img src="../static/img/icons/map-marker.svg" alt="map-marker">
+                    </svg>
+                    <p class="footer-text__address" data-change="address">
+                        {{ cities.current.address }}
+                    </p>
+                </div>
+                <div class="footer__text">
+                     <svg class="footer__text-svg footer__svg-phone">
+                        <img src="../static/img/icons/phone.svg" alt="phone">
+                     </svg>
+                    <a href="tel:89853447646" class="footer-text__phone" data-change="phone" data-phone-change="true">
+                         8-985-344-76-46
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="modal-city">
+        <div class="modal__body">
+            <div class="modal__content">
+                <a href="#" class="modal-close"></a>
+                <p class="modal__title">Выберите город</p>
+                <ul class="modal__list" data-simplebar="simple">
+
+                    <li class="modal__item">
+                        <a class="modal__link" href="#" data-city="Казань" data-phone="8-987-172-36-40" data-address="Казань, ул. Восход, д. 43">Казань</a>
+                    </li>
+
+                    <li class="modal__item">
+                        <a class="modal__link" href="#" data-city="Вологда" data-phone="8-911-501-18-19" data-address="Вологда, Пошехонское ш., д. 20">Вологда</a>
+                    </li>
+                    <li class="modal__item">
+                        <a class="modal__link" href="#" data-city=" Санкт-Петербург" data-phone="8-911-773-50-67" data-address=" Санкт-Петербург, ул. Касимовская, д. 5-Б"> Санкт-Петербург</a>
+                    </li>
+                    <li class="modal__item">
+                        <a class="modal__link" href="#" data-city="Москва" data-phone="8-985-344-76-46" data-address="Москва, ул. Ферганская, д. 8, корп. 2, стр. 2, офис 6">Москва</a>
+                </ul>
+            </div>
+        </div>
+
+<div class="modal" id="modal-phone">
+        <div class="modal__body">
+            <div class="modal__content">
+                <a href="#" class="modal-close"></a>
+                <p class="modal__title">Получить консультацию</p>
+                <form action="/aa/" method="post" class="form form__consultation">
+                    {% csrf_token %}
+                    <div class="form-element">
+                        <input name="phone" type="tel" class="form__input form__phone" placeholder="Номер телефона" required>
+                    </div>
+                    <div class="form-element">
+                        <input name="name" type="text" class="form__input" placeholder="Ваше имя">
+                    </div>
+                    <div class="form-element">
+                        <button type="submit" class="btn btn-green form__button">Получить консультацию</button>
+                    </div>
+                    <div class="form-element">
+                        <label class="form__acceptance">
+                            <input class="form__checkbox" type="checkbox" name="agree">
+                            <span class="custom-checkbox"></span>
+                            <span class="form__acceptance-text">Соглашаюсь с
+                                <a href="#">условиями передачи данных</a>
+                            </span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/index.bundle.js' %}"></script>
+    <script src="{% static 'js/vendors.bundle.js' %}"></script>
+    {% block extra_scripts %}
+
+    {% endblock extra_scripts %}
+</body>
+</html>

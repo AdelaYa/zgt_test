@@ -1,0 +1,24 @@
+<div class="product-card">
+    <div class="product-card__img">
+        <a href="{% if product.image_big %} {{ product.image_big.url }}{% endif %}" data-fancybox="gallery">
+            <img src="{% if product.image_small %} {{ product.image_small.url }}{% endif %}" alt="{{ product.name }}">
+        </a>
+    </div>
+    <div class="product-card-content">
+        <a class="product-card__title" href="/{{ product.name }}">
+            {{ product.name }}
+        </a>
+        <form action="" class="product-card__form product-form">
+            <p class="product-card__price">
+                {{ product.price }} руб/комп
+            </p>
+            <div class="product-form-order">
+                <label class="product-form__label">
+                    <input class="product-form__input" min="1" type="number" name="product_count" id="product_1" value="0">
+                    комп.
+                </label>
+                <button class="btn btn-order" type="submit">Заказать</button>
+            </div>
+        </form>
+    </div>
+</div>
